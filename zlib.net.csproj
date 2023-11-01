@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ProjectType>Local</ProjectType>
+    <AssemblyKeyContainerName />
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>zlib</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile />
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Update="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Update="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Update="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Backup\Adler32.cs" />
+    <Compile Remove="Backup\AssemblyInfo.cs" />
+    <Compile Remove="Backup\Deflate.cs" />
+    <Compile Remove="Backup\InfBlocks.cs" />
+    <Compile Remove="Backup\InfCodes.cs" />
+    <Compile Remove="Backup\Inflate.cs" />
+    <Compile Remove="Backup\InfTree.cs" />
+    <Compile Remove="Backup\StaticTree.cs" />
+    <Compile Remove="Backup\SupportClass.cs" />
+    <Compile Remove="Backup\Tree.cs" />
+    <Compile Remove="Backup\ZInputStream.cs" />
+    <Compile Remove="Backup\Zlib.cs" />
+    <Compile Remove="Backup\ZOutputStream.cs" />
+    <Compile Remove="Backup\ZStream.cs" />
+    <Compile Remove="Backup\ZStreamException.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <AssemblyTitle>ZLIB.NET</AssemblyTitle>
+    <Description>ZLIB.NET</Description>
+    <Company>ComponentAce</Company>
+    <Product>ZLIB.NET</Product>
+    <Copyright>ComponentAce</Copyright>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+  </PropertyGroup>
+</Project>
