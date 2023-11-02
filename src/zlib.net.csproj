@@ -15,6 +15,7 @@
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Product>ZLIB.NET</Product>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
     <Version>1.0.4</Version>
   </PropertyGroup>
