@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
     <RootNamespace>ZLib</RootNamespace>
-    <PackageId>$(AssemblyName)</PackageId>
+    <PackageId>ComponentAce.ZLIB.NET</PackageId>
     <Title>ZLIB.NET</Title>
     <AssemblyVersion>1.0.4.0</AssemblyVersion>
     <FileVersion>1.0.4.0</FileVersion>
@@ -27,6 +27,10 @@
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
+    </None>
+	<None Include="..\LICENSE">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
