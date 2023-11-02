@@ -44,23 +44,6 @@
       <Name>System.XML</Name>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Backup\Adler32.cs" />
-    <Compile Remove="Backup\AssemblyInfo.cs" />
-    <Compile Remove="Backup\Deflate.cs" />
-    <Compile Remove="Backup\InfBlocks.cs" />
-    <Compile Remove="Backup\InfCodes.cs" />
-    <Compile Remove="Backup\Inflate.cs" />
-    <Compile Remove="Backup\InfTree.cs" />
-    <Compile Remove="Backup\StaticTree.cs" />
-    <Compile Remove="Backup\SupportClass.cs" />
-    <Compile Remove="Backup\Tree.cs" />
-    <Compile Remove="Backup\ZInputStream.cs" />
-    <Compile Remove="Backup\Zlib.cs" />
-    <Compile Remove="Backup\ZOutputStream.cs" />
-    <Compile Remove="Backup\ZStream.cs" />
-    <Compile Remove="Backup\ZStreamException.cs" />
-  </ItemGroup>
   <PropertyGroup>
     <AssemblyTitle>ZLIB.NET</AssemblyTitle>
     <Description>ZLIB.NET</Description>

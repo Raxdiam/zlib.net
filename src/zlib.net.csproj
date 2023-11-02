@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
+    <RootNamespace>ZLib</RootNamespace>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Title>ZLIB.NET</Title>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <PackageTags>zlib</PackageTags>
+    <RepositoryUrl>https://github.com/Raxdiam/zlib.net</RepositoryUrl>
+    <PackageProjectUrl>https://www.componentace.com/zlib_.NET.htm</PackageProjectUrl>
+    <Description>ZLIB.NET for modern versions of .NET</Description>
+    <Authors>ComponentAce</Authors>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Product>ZLIB.NET</Product>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <Version>1.0.4</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

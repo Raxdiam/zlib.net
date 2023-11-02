@@ -43,7 +43,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * and contributors of zlib.
 */
 using System;
-namespace ZLib
+namespace ComponentAce.Compression.Libs.zlib
 {
 	
 	public class ZOutputStream:System.IO.Stream

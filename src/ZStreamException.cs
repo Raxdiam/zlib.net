@@ -10,7 +10,7 @@
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /*
-Copyright (c) 2001 Lapo Luchini.
+Copyright (c) 2000,2001,2002,2003 ymnk, JCraft,Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -27,8 +27,8 @@ derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES,
 INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS
-OR ANY CONTRIBUTORS TO THIS SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT,
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL JCRAFT,
+INC. OR ANY CONTRIBUTORS TO THIS SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT,
 INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
 LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
 OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
@@ -42,120 +42,17 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 * and contributors of zlib.
 */
 using System;
-namespace ZLib
+namespace ComponentAce.Compression.Libs.zlib
 {
 	
-	public class ZInputStream:System.IO.BinaryReader
+	
+	public class ZStreamException:System.IO.IOException
 	{
-		internal void  InitBlock()
+		public ZStreamException():base()
 		{
-			Flush = zlibConst.Z_NO_FLUSH;
-			Buf = new byte[Bufsize];
 		}
-		public virtual int FlushMode
+		public ZStreamException(System.String s):base(s)
 		{
-			get => (Flush);
-
-            set => this.Flush = value;
-        }
-		/// <summary> Returns the total number of bytes input so far.</summary>
-		public virtual long TotalIn => Z.total_in;
-
-        /// <summary> Returns the total number of bytes output so far.</summary>
-		public virtual long TotalOut => Z.total_out;
-
-        protected ZStream Z = new ZStream();
-		protected int Bufsize = 512;		
-		protected int Flush;		
-		protected byte[] Buf, Buf1 = new byte[1];
-		protected bool Compress;
-		
-		internal System.IO.Stream InRenamed = null;
-		
-		public ZInputStream(System.IO.Stream inRenamed):base(inRenamed)
-		{
-			InitBlock();
-			this.InRenamed = inRenamed;
-			Z.inflateInit();
-			Compress = false;
-			Z.next_in = Buf;
-			Z.next_in_index = 0;
-			Z.avail_in = 0;
-		}
-		
-		public ZInputStream(System.IO.Stream inRenamed, int level):base(inRenamed)
-		{
-			InitBlock();
-			this.InRenamed = inRenamed;
-			Z.deflateInit(level);
-			Compress = true;
-			Z.next_in = Buf;
-			Z.next_in_index = 0;
-			Z.avail_in = 0;
-		}
-		
-		/*public int available() throws IOException {
-		return inf.finished() ? 0 : 1;
-		}*/
-		
-		public  override int Read()
-		{
-			if (Read(Buf1, 0, 1) == - 1)
-				return (- 1);
-			return (Buf1[0] & 0xFF);
-		}
-		
-		internal bool Nomoreinput = false;
-				
-		public new int Read(byte[] b, int off, int len)
-		{
-			if (len == 0)
-				return (0);
-			int err;
-			Z.next_out = b;
-			Z.next_out_index = off;
-			Z.avail_out = len;
-			do 
-			{
-				if ((Z.avail_in == 0) && (!Nomoreinput))
-				{
-					// if buffer is empty and more input is avaiable, refill it
-					Z.next_in_index = 0;
-					Z.avail_in = SupportClass.ReadInput(InRenamed, Buf, 0, Bufsize); //(bufsize<z.avail_out ? bufsize : z.avail_out));
-					if (Z.avail_in == - 1)
-					{
-						Z.avail_in = 0;
-						Nomoreinput = true;
-					}
-				}
-				if (Compress)
-					err = Z.deflate(Flush);
-				else
-					err = Z.inflate(Flush);
-				if (Nomoreinput && (err == zlibConst.Z_BUF_ERROR))
-					return (- 1);
-				if (err != zlibConst.Z_OK && err != zlibConst.Z_STREAM_END)
-					throw new ZStreamException((Compress?"de":"in") + "flating: " + Z.msg);
-				if (Nomoreinput && (Z.avail_out == len))
-					return (- 1);
-			}
-			while (Z.avail_out == len && err == zlibConst.Z_OK);
-			//System.err.print("("+(len-z.avail_out)+")");
-			return (len - Z.avail_out);
-		}
-				
-		public long Skip(long n)
-		{
-			int len = 512;
-			if (n < len)
-				len = (int) n;
-			byte[] tmp = new byte[len];
-			return ((long) SupportClass.ReadInput(BaseStream, tmp, 0, tmp.Length));
-		}
-		
-		public override void  Close()
-		{
-			InRenamed.Close();
 		}
 	}
 }

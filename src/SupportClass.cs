@@ -2,7 +2,7 @@
 using System;
 
 
-namespace ZLib
+namespace ComponentAce.Compression.Libs.zlib
 {
 	public class SupportClass
 	{
